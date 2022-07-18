@@ -8,7 +8,8 @@ import time
 from sys import platform
 from Tools import db_tools as _db
 from Tools import misc as _utilities
-from types import NoneType
+# from types import NoneType - py2
+
 
 # j_TODO : Look into this for Linux notification
 #libnotify-bin
@@ -24,10 +25,10 @@ def main():
 
     args = parser.parse_args()
     p = args
-    if p.project is None or p.project is NoneType: p.project=""
-    if p.comment is None or p.comment is NoneType: p.comment=""
-    if p.time is None or p.time is NoneType: p.time=""
-    if p.rest is None or p.rest is NoneType: p.rest=""
+    if p.project is None or p.project is type(None): p.project=""
+    if p.comment is None or p.comment is type(None): p.comment=""
+    if p.time is None or p.time is type(None): p.time=""
+    if p.rest is None or p.rest is type(None): p.rest=""
     if len(p.rest) > 0 and p.time == "":
         print('You must use Time with Rest')
         exit

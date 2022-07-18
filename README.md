@@ -15,6 +15,13 @@ Linux
 ### Pre-requirements
 Python 3.6+ at minimum.
 
+### Commands
+| -h | Help Menu                                                                     |
+|----|-------------------------------------------------------------------------------|
+| -t | Must be used with (-r), specify custom length of work time                    |
+| -r | Must be used with (-t), specify custom length of break time                   |
+| -p | (optional - default is, "General") Sets the project the session is for        |
+| -c | (optional) Specify the comment on what you are working on during work session |
 
 ### Examples
 Run Generic : `python main.py`
