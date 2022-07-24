@@ -22,8 +22,7 @@ Python 3.6+ at minimum.
 | -r | Must be used with (-t), specify custom length of break time                   |
 | -p | (optional - default is, "General") Sets the project the session is for        |
 | -c | (optional) Specify the comment on what you are working on during work session |
-| --stats "today" or "yyyy-mm-dd,yyyy-mm-dd"| Get the current worked time and rest time, you can also use this with `-p` to specify showing just a specific project
-| 
+| --stats "today" or "yyyy-mm-dd,yyyy-mm-dd"| Get the current worked time and rest time, you can also use this with `-p` to specify showing just a specific project | 
 
 ### Examples
 Run Generic : `python main.py`
