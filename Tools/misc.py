@@ -1,5 +1,13 @@
 import time
-import datetime
+
+from datetime import datetime
+
 
 def get_epoch() -> str:
-	return str(int(time.time()))
+	today_epoch = datetime.timestamp(datetime.utcnow())
+	return str(today_epoch)
+
+
+def get_current_time():
+	current = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+	return current
