@@ -65,6 +65,7 @@ def main():
         a_inf = p.stats
         if ',' in a_inf:
             a_inf = a_inf.split(',')
+            print(f'a_inf: {a_inf} ({type(a_inf)})')
             if(len(p.project) > 0):
                 _db.get_stats(conn, start_date=a_inf[0], end_date=a_inf[1])
             else:
@@ -79,6 +80,18 @@ def main():
                 _db.get_stats(conn, start_date=start_day, end_date=ed_str, project=str(p.project))
             else:
                 _db.get_stats(conn, start_date=start_day, end_date=ed_str)
+        elif p.stats == 'week':
+            end_of_week = datetime.now() - timedelta(days=((datetime.now().isoweekday() + 1) % 7))
+            start_of_week = end_of_week - timedelta(days=6)
+            # start_of_week = start_day - timedelta(days = start_day.weekday())
+            # end_of_week = start_of_week + timedelta(days = 6)
+            # print(f'Getting Stats for the Week')
+            print(f'Sunday: {start_of_week}\nSaturday: {end_of_week}\n')
+            if(len(p.project) > 0):
+                _db.get_stats(conn, start_date=start_of_week, end_date=end_of_week, project=str(p.project))
+            else:
+                _db.get_stats(conn, start_date=start_of_week, end_date=end_of_week)
+
     else:
         # Start main functionality
         if(len(p.project) > 0):
