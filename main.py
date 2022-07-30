@@ -81,16 +81,24 @@ def main():
             else:
                 _db.get_stats(conn, start_date=start_day, end_date=ed_str)
         elif p.stats == 'week':
-            end_of_week = datetime.now() - timedelta(days=((datetime.now().isoweekday() + 1) % 7))
-            start_of_week = end_of_week - timedelta(days=6)
+            today = datetime.today()
+            t_number = today.isoweekday()
+            days_to_sat = 6 - t_number
+            sunday_date = (datetime.now() - timedelta(days=t_number)).strftime('%Y-%m-%d')
+            sat_date = today + timedelta(days=days_to_sat)
+
+            # j_TODO : code cleanup is needed
+            # end_of_week = datetime.now() - timedelta(days=((datetime.now().isoweekday() + 1) % 7))
+            # start_of_week = end_of_week - timedelta(days=6)
             # start_of_week = start_day - timedelta(days = start_day.weekday())
             # end_of_week = start_of_week + timedelta(days = 6)
             # print(f'Getting Stats for the Week')
-            print(f'Sunday: {start_of_week}\nSaturday: {end_of_week}\n')
+            print(f'Sunday: {sunday_date}\nSaturday: {sat_date.strftime("%Y-%m-%d")}\n')
+
             if(len(p.project) > 0):
-                _db.get_stats(conn, start_date=start_of_week, end_date=end_of_week, project=str(p.project))
+                _db.get_stats(conn, start_date=sunday_date, end_date=sat_date, project=str(p.project))
             else:
-                _db.get_stats(conn, start_date=start_of_week, end_date=end_of_week)
+                _db.get_stats(conn, start_date=sunday_date, end_date=sat_date)
 
     else:
         # Start main functionality
